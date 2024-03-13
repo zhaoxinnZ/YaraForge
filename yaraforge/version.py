@@ -1,7 +1,7 @@
-__version__ = 'Beta_0.1.0'
+__version__ = '0.1.2b1'
 
 from yaraforge.metadata import pathnames
-from .utils.logger import get_global_logger
+from yaraforge.utils.logger import get_global_logger
 
 logger = get_global_logger(pathnames['logger_dir'])
 

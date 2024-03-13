@@ -1,7 +1,7 @@
 import binascii
 
-# Assuming yaraforge.metadata.pathnames and yaraforge.utils.logger are valid modules
 from yaraforge.metadata import pathnames
+# Assuming yaraforge.metadata.pathnames and yaraforge.utils.logger are valid modules
 from yaraforge.utils.logger import get_global_logger
 
 logger = get_global_logger(pathnames['logger_dir'])

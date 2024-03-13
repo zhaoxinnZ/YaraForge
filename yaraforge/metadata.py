@@ -1,7 +1,9 @@
+import os
 from pathlib import Path
-import idaapi
+appdata_roaming = Path(os.getenv('APPDATA'))
 
-plugin_path = Path(idaapi.get_user_idadir()) / "plugins"
+# 定義插件路徑為 IDA Pro 的 plugins 資料夾
+plugin_path = appdata_roaming / "Hex-Rays" / "IDA Pro" / "plugins"
 
 
 metadata = {

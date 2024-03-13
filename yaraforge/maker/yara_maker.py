@@ -1,14 +1,15 @@
 import json
 from datetime import datetime
-from ..metadata import *
+from pathlib import Path
 
 import idaapi
 import idc
 from capstone import *
 
+from yaraforge.metadata import metadata
+from yaraforge.version import get_version
 from ..utils.opcode_processor import *
 from ..utils.opcode_processor import _process_instruction
-from ..version import get_version
 
 logger = get_global_logger(pathnames['logger_dir'])
 
@@ -101,6 +102,9 @@ class YaraMaker:
         rule_content = f"rule {formatted_rule_name} {{\n"
         rule_content += "  meta:\n"
         for key, value in self.metas.items():
+            # 檢查 value 是否已經是一個字符串，如果是，則在其前後添加引號
+            if isinstance(value, str) and not value.startswith("\""):
+                value = f"\"{value}\""
             rule_content += f"    {key} = {value}\n"
         rule_content += rule_comments
         rule_content += "  strings:\n"
